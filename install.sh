@@ -36,11 +36,12 @@ Interface=$(whiptail --title "Interface Install" --radiolist \
  
 exitstatuws=$?
 if [ $exitstatuws = 0 ]; then
-     ./$Interface.sh
+    cd $local
+    ./$Interface.sh
 else
     echo ""
 fi
 su $usuario
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cp $local
+cd $local
 cp .zshrc /home/$usuario
