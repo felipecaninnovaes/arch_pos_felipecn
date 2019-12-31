@@ -32,16 +32,16 @@ Interface=$(whiptail --title "Interface Install" --radiolist \
 "LXQT" "QT interface" OFF \
 "Gnome" "Gnome_Shell" ON \
 "Mate" "Mate" OFF \
+"KDE" "KDE" OFF \
 "XFCE" "XFCE" OFF 3>&1 1>&2 2>&3)
  
 exitstatuws=$?
 if [ $exitstatuws = 0 ]; then
-    cd $local
+    git clone https://github.com/felipecaninnovaes/arch_pos_felipecn.git
+    cd arch_pos_felipecn
+    chmod +x *
     ./$Interface.sh
 else
     echo ""
 fi
-su $usuario
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cd $local
-cp .zshrc /home/$usuario
+
