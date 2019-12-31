@@ -1,5 +1,8 @@
 #!/bin/bash
 local= pwd
+sudo rm /etc/locale.gen
+sudo cp locale.gen /etc/locale.gen
+sudo locale-gen
 Driver=$(whiptail --title "Driver Install" --radiolist \
 "Qual sua placa de video?" 15 60 4 \
 "Nvidia" "Nvidia_Placa" OFF \
