@@ -1,8 +1,8 @@
 #!/bin/bash
-local= pwd
-sudo rm /etc/locale.gen
-sudo cp locale.gen /etc/locale.gen
-sudo locale-gen
+local= pwd;
+sudo rm /etc/locale.gen;
+sudo cp locale.gen /etc/locale.gen;
+sudo locale-gen;
 
 #-> Driver Install
 Driver=$(whiptail --title "Driver Install" --radiolist \
@@ -23,14 +23,14 @@ fi
 usuario=$(whiptail --title "Nome de Usuario" --inputbox "Insira o Nome sem letras maiusculas." 10 60 3>&1 1>&2 2>&3)
 exitstatuss=$?
 if [ $exitstatuss = 0 ]; then
-    useradd -m -g users -G wheel $usuario
-    echo "DIGITE A SENHA QUE DESEJA PARA O USUARIO"
-    passwd $usuario
-    echo "$usuario ALL=(ALL)ALL" >> /etc/sudoers
-    cd /home/$usuario
-    mkdir Downloads Videos  Desktop Documents Music Pictures
-    sudo pacman -S zsh 
-    chmod 777 -r *
+    useradd -m -g users -G wheel $usuario;
+    echo "DIGITE A SENHA QUE DESEJA PARA O USUARIO";
+    passwd $usuario;
+    echo "$usuario ALL=(ALL)ALL" >> /etc/sudoers;
+    cd /home/$usuario;
+    mkdir Downloads Videos  Desktop Documents Music Pictures;
+    sudo pacman -S zsh ;
+    chmod 777 -r *;
 else
     echo ""
 fi
@@ -46,11 +46,11 @@ Interface=$(whiptail --title "Interface Install" --radiolist \
  
 exitstatuws=$?
 if [ $exitstatuws = 0 ]; then
-    git clone https://github.com/felipecaninnovaes/arch_pos_felipecn.git
-    cd arch_pos_felipecn
-    chmod +x *
-    ./$Interface.sh
+    git clone https://github.com/felipecaninnovaes/arch_pos_felipecn.git;
+    cd arch_pos_felipecn;
+    chmod +x *;
+    ./$Interface.sh;
 else
-    echo ""
+    echo "";
 fi
 
