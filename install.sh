@@ -10,6 +10,7 @@ Driver=$(whiptail --title "Driver Install" --radiolist \
     "Nvidia" "Nvidia_Placa" OFF \
     "Nvidia-390xx" "Nvidia Placa (Legacy)" OFF \
     "Intel" "Intel_Integrada" ON \
+    "AmdGpu" "Amd_Radeon(Ryzen APU)" off \
     "VirtualBox" "Vboxdriver" OFF 3>&1 1>&2 2>&3)
 
 exitstatus=$?
