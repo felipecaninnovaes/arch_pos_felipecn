@@ -6,12 +6,13 @@ sudo locale-gen;
 
 #-> Driver Install
 Driver=$(whiptail --title "Driver Install" --radiolist \
-    "Qual sua placa de video?" 15 60 4 \
+    "Qual sua placa de video?" 15 60 6 \
     "Nvidia" "Nvidia_Placa" OFF \
     "Nvidia-390xx" "Nvidia Placa (Legacy)" OFF \
     "Intel" "Intel_Integrada" ON \
     "AmdGpu" "Amd_Radeon(Ryzen APU)" off \
-    "VirtualBox" "Vboxdriver" OFF 3>&1 1>&2 2>&3)
+    "VMware" "VWware_Driver" off \
+    "VirtualBox" "Virtualbox_Driver" OFF 3>&1 1>&2 2>&3)
 
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
@@ -38,7 +39,7 @@ fi
 
 #-> Interface installation
 Interface=$(whiptail --title "Interface Install" --radiolist \
-    "Qual interface deseja instalar?" 15 60 4 \
+    "Qual interface deseja instalar?" 15 60 5 \
     "LXQT" "QT interface" OFF \
     "Gnome" "Gnome_Shell" ON \
     "Mate" "Mate" OFF \
