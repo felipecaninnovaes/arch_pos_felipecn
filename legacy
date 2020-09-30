@@ -2,3 +2,13 @@
 # grub-install --target=i386-pc /dev/sdX && mkinitcpio -p linux
 
 grub-mkconfig -o /boot/grub/grub.cfg && mkinitcpio -p linux
+
+
+# other disk windows boot
+# Then edit /etc/grub.d/40_custom, and at the end of the file add:
+
+# "menuentry "Windows 10" --class windows --class os {
+#    insmod ntfs
+#    search --no-floppy --set=root --fs-uuid $your_uuid_here$
+#    ntldr /bootmgr
+# }"
