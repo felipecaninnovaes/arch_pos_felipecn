@@ -1,2 +1,4 @@
-sudo pacman --needed -S grub  os-prober --noconfirm
-grub-install --target=i386-pc /dev/sdX && mkinitcpio -p linux && grub-mkconfig -o /boot/grub/grub.cfg && mkinitcpio -p linux
+# sudo pacman --needed -S grub  os-prober --noconfirm
+# grub-install --target=i386-pc /dev/sdX && mkinitcpio -p linux
+
+grub-mkconfig -o /boot/grub/grub.cfg && mkinitcpio -p linux
