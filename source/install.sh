@@ -16,7 +16,7 @@ Driver=$(whiptail --title "Driver Install" --radiolist \
 
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
-     ./$Driver.sh
+     ./source/drivers/$Driver.sh
 else
     echo ""
 fi
@@ -30,9 +30,22 @@ if [ $exitstatuss = 0 ]; then
     passwd $usuario;
     echo "$usuario ALL=(ALL)ALL" >> /etc/sudoers;
     cd /home/$usuario;
-    mkdir Downloads Videos  Desktop Documents Music Pictures;
+    mkdir Downloads Videos Desktop Documents Music Pictures;
     sudo pacman -S zsh ;
     chmod 777 -r *;
+else
+    echo ""
+fi
+
+#-> Driver Install
+boot=$(whiptail --title "Driver Install" --radiolist \
+    "Qual sue tipo de BIOS?" 15 60 6 \
+    "efi" "Mais atual" OFF \
+    "legacy" "bios legada" OFF 3>&1 1>&2 2>&3)
+
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+     ./source/grub/$boot.sh
 else
     echo ""
 fi
@@ -48,11 +61,11 @@ Interface=$(whiptail --title "Interface Install" --radiolist \
  
 exitstatuws=$?
 if [ $exitstatuws = 0 ]; then
-    git clone https://github.com/felipecaninnovaes/arch_pos_felipecn.git;
-    cd arch_pos_felipecn;
     chmod +x *;
-    ./$Interface.sh;
+    ./source/Base.sh;
+    ./source/interfaces/$Interface.sh;
 else
     echo "";
 fi
 
+sudo chmod -r 777 /home/$usuario/* #beta

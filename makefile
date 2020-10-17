@@ -1,2 +1,3 @@
 install: 
-	./install.sh
+	sudo pacman --needed -S libnewt --noconfirm
+	./source/install.sh
