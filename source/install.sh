@@ -68,4 +68,4 @@ else
     echo "";
 fi
 
-sudo chmod -r 777 /home/$usuario/* #beta
+sudo chmod -R 777 /home/* #beta
