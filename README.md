@@ -1,1 +1,1 @@
-# arch_test
+# Scrip auto config arch 
