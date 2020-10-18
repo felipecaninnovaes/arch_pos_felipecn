@@ -1,1 +1,1 @@
-# Scrip auto config arch 
+# Script auto config arch 
