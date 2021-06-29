@@ -1,5 +1,6 @@
 #!/bin/bash
-local= pwd;
+local=$(pwd);
+export local;
 sudo rm /etc/locale.gen;
 sudo cp locale.gen /etc/locale.gen;
 sudo locale-gen;
@@ -22,20 +23,24 @@ else
 fi
 
 #-> Create User
+
 usuario=$(whiptail --title "Nome de Usuario" --inputbox "Insira o Nome sem letras maiusculas." 10 60 3>&1 1>&2 2>&3)
 exitstatuss=$?
 if [ $exitstatuss = 0 ]; then
     useradd -m -g users -G wheel $usuario;
     echo "DIGITE A SENHA QUE DESEJA PARA O USUARIO";
     passwd $usuario;
-    echo "$usuario ALL=(ALL)ALL" >> /etc/sudoers;
     cd /home/$usuario;
+    echo "$usuario ALL=(ALL)ALL" >> /etc/sudoers;
     mkdir Downloads Videos Desktop Documents Music Pictures;
-    sudo pacman -S zsh ;
-    chmod 777 -r *;
+    sudo pacman -S --needed zsh --noconfirm ;
+    chmod -R 777 /home/$usuario;
+    cd $local;
 else
     echo ""
 fi
+
+export usuario;
 
 #-> Driver Install
 boot=$(whiptail --title "Driver Install" --radiolist \
@@ -52,20 +57,19 @@ fi
 
 #-> Interface installation
 Interface=$(whiptail --title "Interface Install" --radiolist \
-    "Qual interface deseja instalar?" 15 60 5 \
+    "Qual interface deseja instalar?" 15 60 7 \
     "LXQT" "QT interface" OFF \
     "Gnome" "Gnome_Shell" ON \
     "Mate" "Mate" OFF \
     "KDE" "KDE" OFF \
+    "BSPWM" "BSPWM" OFF \
     "XFCE" "XFCE" OFF 3>&1 1>&2 2>&3)
  
 exitstatuws=$?
 if [ $exitstatuws = 0 ]; then
-    chmod +x *;
+   chmod +x *;
    bash ./source/Base.sh;
-   bash ./source/interfaces/$Interface.sh;
+   bash ./source/interfaces/$Interface/$Interface.sh;
 else
     echo "";
 fi
-
-sudo chmod -R 777 /home/* #beta
