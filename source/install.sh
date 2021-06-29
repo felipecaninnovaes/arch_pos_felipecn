@@ -11,12 +11,12 @@ Driver=$(whiptail --title "Driver Install" --radiolist \
     "Nvidia-390xx" "Nvidia Placa (Legacy)" OFF \
     "Intel" "Intel_Integrada" ON \
     "AmdGpu" "Amd_Radeon(Ryzen APU)" off \
-    "VMware" "VWware_Driver" off \
+    "VMWare" "VWware_Driver" off \
     "VirtualBox" "Virtualbox_Driver" OFF 3>&1 1>&2 2>&3)
 
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
-     ./source/drivers/$Driver.sh
+     bash ./source/drivers/$Driver.sh
 else
     echo ""
 fi
@@ -45,7 +45,7 @@ boot=$(whiptail --title "Driver Install" --radiolist \
 
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
-     ./source/grub/$boot.sh
+    bash ./source/grub/$boot.sh
 else
     echo ""
 fi
@@ -62,8 +62,8 @@ Interface=$(whiptail --title "Interface Install" --radiolist \
 exitstatuws=$?
 if [ $exitstatuws = 0 ]; then
     chmod +x *;
-    ./source/Base.sh;
-    ./source/interfaces/$Interface.sh;
+   bash ./source/Base.sh;
+   bash ./source/interfaces/$Interface.sh;
 else
     echo "";
 fi
