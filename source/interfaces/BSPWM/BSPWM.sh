@@ -7,6 +7,6 @@ rm -r /home/$usuario/.config/rofi
 rm -r /home/$usuario/.config/polybar
 rm -r /home/$usuario/.config/gtk-3.0
 
-cp -R $local/source/interface/BSPWM/.config /home/$usuario/
+cp -R $local/source/interfaces/BSPWM/.config /home/$usuario/
 
 sudo systemctl enable lightdm
